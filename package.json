@@ -1,37 +1,42 @@
 {
-  "name": "electron-drag",
-  "version": "1.2.2",
+  "name": "electron-drag-ex",
+  "version": "1.2.4",
   "description": "Window dragging for electron applications",
   "main": "index.js",
+  "types": "index.d.ts",
   "scripts": {
-    "test": "electron test/app.js",
-    "test-rebuild": "electron-rebuild"
+    "test": "electron test/app.js webpack",
+    "rebuild": "electron-rebuild",
+    "install": "node mounted_depend.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/kapetan/electron-drag"
+    "url": "git+https://github.com/linqingwudiv1/electron-drag-ex"
   },
   "keywords": [
     "electron",
     "mouse",
     "drag",
+    "vue",
+    "react",
     "window"
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/kapetan/electron-drag/issues"
+    "url": "https://github.com/linqingwudiv1/electron-drag-ex/issues"
   },
-  "homepage": "https://github.com/kapetan/electron-drag",
+  "homepage": "https://github.com/linqingwudiv1/electron-drag-ex",
   "optionalDependencies": {
-    "osx-mouse": "^1.3.0",
-    "win-mouse": "^1.2.0"
+    "win-mouse": "^1.3.0",
+    "osx-mouse": "^1.3.1"
   },
-  "dependencies": {
-    "dombo": "^3.2.0",
-    "try-require": "^1.2.1"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "electron-prebuilt": "^1.2.2",
-    "electron-rebuild": "^1.1.5"
-  }
+    "electron": "^7.1.9",
+    "electron-rebuild": "^1.8.8"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "author": "l.q"
 }

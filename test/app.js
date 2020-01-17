@@ -7,8 +7,11 @@ var BrowserWindow = electron.BrowserWindow;
 var window;
 
 app.on('ready', function() {
-	window = new BrowserWindow({ width: 800, height: 600, frame: false });
+	window = new BrowserWindow({ width: 800, height: 600, frame: false, webPreferences:{
+		nodeIntegration:true,
+		devTools :true
+	} });
 	var url = 'file://' + path.join(__dirname, 'index.html');
-
 	window.loadURL(url);
+
 });

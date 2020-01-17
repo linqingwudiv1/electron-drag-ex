@@ -1,3 +1,10 @@
+### vue-cli@3 and electron-plugin-electron support..
+
+maybe can use to the react framework?...
+
+ the win-mouse or osx-mouse possiable input issue of Node Version is difference,use 'electron-rebuild' rebuild  win-mouse or osx-mouse lib
+
+
 # electron-drag
 
 Improved window dragging for `Electron` applications.

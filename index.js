@@ -1,25 +1,53 @@
-var tryRequire = require('try-require');
-var $ = require('dombo');
+let {remote} = require('electron');
 
-var electron = tryRequire('electron');
-var remote = electron ? electron.remote : tryRequire('remote');
+let mouseConstructor;
+switch (process.platform) {
+	case 'win32':
+	{
+		try {
+			mouseConstructor =  require('win-mouse');
+		} catch (error) {
+			//console.log(error);
+		}
 
-var mouseConstructor = tryRequire('osx-mouse') || tryRequire('win-mouse');
+		break;
+	}
+	case 'sunos':
+	{
+		try {
+			
+			mouseConstructor = require('osx-mouse');
+		} catch (error) {
+			
+		}
+		break;
+	}
+}
 
-var supported = !!mouseConstructor;
-var noop = function() {};
+const supported = !!mouseConstructor;
+const noop = function() {console.error('[error]: platform is not support...');};
 
-var drag = function(element) {
-	element = $(element);
+let drag = function(element) {
+	if ( typeof element === 'string')
+	{
+		element = document.querySelector(element);
+		if (element == null)
+		{
+			console.error(`element ${element} is not exist.`);
+			return;
+		}
+	}
+	//console.log( 'elect', element, typeof element, element.on);
 
 	var offset = null;
 	var mouse = mouseConstructor();
 
 	var onmousedown = function(e) {
-		offset = [e.clientX, e.clientY];
+		// console.log('onmousedown : ', e);
+		offset = [e.clientX, e.clientY]; 
 	};
 
-	element.on('mousedown', onmousedown);
+	element.addEventListener('mousedown', onmousedown) ;
 
 	mouse.on('left-drag', function(x, y) {
 		if(!offset) return;
@@ -35,10 +63,14 @@ var drag = function(element) {
 	});
 
 	return function() {
-		element.off('mousedown', onmousedown);
+		element.removeEventListener('mousedown', onmousedown);
 		mouse.destroy();
 	};
 };
 
-drag.supported = supported;
-module.exports = supported ? drag : noop;
+if (!supported)
+{
+	drag = noop;
+}
+
+module.exports = drag;
