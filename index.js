@@ -7,7 +7,7 @@ switch (process.platform) {
 		try {
 			mouseConstructor =  require('win-mouse');
 		} catch (error) {
-			console.log(error);
+			console.log('[error]: ', error);
 		}
 
 		break;
@@ -17,7 +17,7 @@ switch (process.platform) {
 		try {
 			mouseConstructor = require('osx-mouse');
 		} catch (error) {
-			console.log(error);
+			console.log('[error]: ',error);
 		}
 		break;
 	}

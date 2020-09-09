@@ -13,5 +13,7 @@ app.on('ready', function() {
 	} });
 	var url = 'file://' + path.join(__dirname, 'index.html');
 	window.loadURL(url);
+	
+	//window.loadURL(url);
 
 });

@@ -1,6 +1,6 @@
 {
   "name": "electron-drag-ex",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "description": "Window dragging for electron applications",
   "main": "index.js",
   "types": "index.d.ts",
@@ -27,13 +27,13 @@
   },
   "homepage": "https://github.com/linqingwudiv1/electron-drag-ex",
   "optionalDependencies": {
-    "win-mouse": "^1.3.0",
+    "win-mouse": "^2.0.0",
     "osx-mouse": "^1.3.1"
   },
   "dependencies": {},
   "devDependencies": {
-    "electron": "^7.1.9",
-    "electron-rebuild": "^1.8.8"
+    "electron": "^10.0.1",
+    "electron-rebuild": "^2.0.2"
   },
   "directories": {
     "test": "test"
